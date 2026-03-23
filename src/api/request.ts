@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosResponse } from 'axios'
 
-const baseURL = '/dev-api'
+const baseURL = '/prod-api'
 
 const instance: AxiosInstance = axios.create({
   baseURL,
@@ -20,7 +20,16 @@ instance.interceptors.request.use(
 )
 
 instance.interceptors.response.use(
-  (response: AxiosResponse) => response.data,
+  (response: AxiosResponse) => {
+    if (response.status >= 200 && response.status < 300) {
+      const data = response.data as { code?: number; msg?: string }
+      if (data.code !== undefined && data.code !== 200 && data.code !== 0) {
+        return Promise.reject(response)
+      }
+      return response.data
+    }
+    return Promise.reject(response)
+  },
   (error) => {
     if (error.response?.status === 401) {
       localStorage.removeItem('token')

@@ -11,7 +11,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/dev-api': {
+      '/prod-api': {
         target: 'http://124.93.196.45:10001',
         changeOrigin: true
       }
