@@ -27,7 +27,7 @@
         >
           <div class="order-header">
             <span class="order-no">{{ order.chargingOrdersNo }}</span>
-            <van-tag :type="getStatusType(order)" size="small">{{ getStatusText(order) }}</van-tag>
+            <van-tag :type="getStatusType(order)" size="medium">{{ getStatusText(order) }}</van-tag>
           </div>
           <div class="order-info">
             <span class="time">{{ order.beginTime || '-' }}</span>
@@ -101,11 +101,11 @@ const goToDetail = (id: number) => {
   router.push(`/order-detail/${id}`)
 }
 
-const endCharging = (id: number) => {
+const endCharging = (_id: number) => {
   showToast('结束充电功能开发中')
 }
 
-const payOrder = (id: number) => {
+const payOrder = (_id: number) => {
   showToast('支付功能开发中')
 }
 
@@ -113,7 +113,7 @@ const fetchOrders = async () => {
   loading.value = true
   try {
     const res = await getChargingOrders()
-    orders.value = res.data || []
+    orders.value = res.data?.data || []
   } catch (error: any) {
     console.error('获取订单失败:', error)
     showFailToast(error.response?.data?.msg || '获取订单失败')

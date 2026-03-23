@@ -50,7 +50,12 @@ export interface ChargingOrderResponse {
   msg: string
 }
 
-export const login = (data: LoginParams) => request.post('/login', data)
+export interface LoginResponse {
+  token: string
+}
+
+export const login = (data: LoginParams) => 
+  request.post<LoginResponse>('/login', data)
 
 export const register = (data: RegisterParams) => request.post('/register', data)
 
