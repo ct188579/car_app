@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/dev-api/(.*)", "destination": "http://124.93.196.45:10001/$1" }
+  ]
+}
