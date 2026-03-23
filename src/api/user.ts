@@ -39,6 +39,7 @@ export interface ChargingOrder {
   carModels: string | null
   chargingPileName: string | null
   chargingPileNo: string | null
+  remark: string | null
   createTime: string | null
   updateTime: string | null
 }
