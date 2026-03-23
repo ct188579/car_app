@@ -112,8 +112,8 @@ const payOrder = (_id: number) => {
 const fetchOrders = async () => {
   loading.value = true
   try {
-    const res = await getChargingOrders()
-    orders.value = res.data?.data || []
+    const res = await getChargingOrders() as unknown as { data: ChargingOrder[] }
+    orders.value = res.data || []
   } catch (error: any) {
     console.error('获取订单失败:', error)
     showFailToast(error.response?.data?.msg || '获取订单失败')

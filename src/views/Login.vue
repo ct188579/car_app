@@ -69,8 +69,8 @@ const handleLogin = async () => {
 
   loading.value = true
   try {
-    const res = await login(form.value)
-    localStorage.setItem('token', res.data.token)
+    const res = await login(form.value) as unknown as { token: string }
+    localStorage.setItem('token', res.token)
     localStorage.setItem('phone', form.value.username)
     showToast('登录成功')
     router.replace('/home')
