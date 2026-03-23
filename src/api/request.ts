@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosResponse } from 'axios'
 
-const baseURL = '/prod-api'
+const baseURL = '/api/proxy'
 
 const instance: AxiosInstance = axios.create({
   baseURL,
