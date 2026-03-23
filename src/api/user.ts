@@ -55,12 +55,12 @@ export interface LoginResponse {
 }
 
 export const login = (data: LoginParams) => 
-  request.post<LoginResponse>('/login', data)
+  request.post<LoginResponse>('/prod-api/login', data)
 
-export const register = (data: RegisterParams) => request.post('/register', data)
+export const register = (data: RegisterParams) => request.post('/prod-api/register', data)
 
 export const getChargingOrders = () => 
-  request.get<ChargingOrderResponse>('/bs-smart-charger/orders/list')
+  request.get<ChargingOrderResponse>('/prod-api/bs-smart-charger/orders/list')
 
 export const getOrderDetail = (id: number) => 
-  request.get<ChargingOrder>(`/bs-smart-charger/orders/${id}`)
+  request.get<ChargingOrder>(`/prod-api/bs-smart-charger/orders/${id}`)

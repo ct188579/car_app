@@ -1,7 +1,7 @@
 import axios from 'axios'
 import type { AxiosInstance, AxiosResponse } from 'axios'
 
-const baseURL = '/api/proxy'
+const baseURL = 'http://124.93.196.45:10001'
 
 const instance: AxiosInstance = axios.create({
   baseURL,
